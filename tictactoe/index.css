@@ -1,0 +1,46 @@
+.{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body{
+    background-color: rgb(213, 130, 20);
+}
+.main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* .container{
+    margin: 5% 10%;
+} */
+.title{
+    padding-top: 10%;
+    font-size: 1.5em;
+    text-align: center;
+}
+.playername{
+    margin-top:2vh;
+    text-align: center;
+    font-size: 1.3em;
+}
+.game_board{
+    display: grid;
+    grid-template-columns: repeat(3,10vh);
+    grid-template-rows: repeat(3,10vh);
+    width: 100%;
+    height: 100%;
+}
+.board{
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}
+.board:nth-child(3n){
+    border-right: none;
+}
+.board:nth-child(6) ~.board{
+    border-bottom: none;
+
+}
