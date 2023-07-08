@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Kadwa:wght@400;700&family=Lato:wght@300&family=Roboto:wght@100;300&family=Tsukimi+Rounded:wght@500&display=swap');
 .{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.body{
-    background-color: rgb(213, 130, 20);
+body{
+    background-color: rgb(239, 221, 197);
+    font-family: 'Inter', sans-serif;
 }
 .main{
     width: 100%;
@@ -26,21 +28,53 @@
     text-align: center;
     font-size: 1.3em;
 }
+.player_turn{
+    font-size: 1.5em;
+    text-align: center;
+}
+
 .game_board{
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(3,10vh);
     grid-template-rows: repeat(3,10vh);
     width: 100%;
     height: 100%;
 }
 .board{
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    border-bottom: 3px solid black;
+    border-right: 3px solid black;
+    font-size: 4.5em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .board:nth-child(3n){
     border-right: none;
 }
 .board:nth-child(6) ~.board{
     border-bottom: none;
-
 }
+.button{
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    width:8vw;
+    height:5vh;
+    background-color: aqua;
+    border: none;
+    border-radius: 15px;
+}
+button:hover {
+    box-shadow: 0 0 10px red;
+}
+
+@media (max-width:700px){
+    button{
+        width: 20vw;
+    }
+} 
