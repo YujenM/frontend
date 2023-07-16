@@ -27,10 +27,12 @@ body{
     margin-top:2vh;
     text-align: center;
     font-size: 1.3em;
+    
 }
 .player_turn{
     font-size: 1.5em;
     text-align: center;
+    margin:10% 0;
 }
 
 .game_board{
