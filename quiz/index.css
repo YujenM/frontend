@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Kadwa:wght@400;700&family=Lato:wght@300&family=Roboto:wght@100;300&family=Tsukimi+Rounded:wght@500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Kadwa', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+}
+.title h1{
+    margin:5vh 0 0 0;
+    font-size: 3.5em;
+    font-weight: lighter;
+    text-align: center;
+    color: rgb(104, 104, 104);
+}
+.title p{
+    color: rgb(104, 104, 104);
+    font-size: 1.5em;
+    text-align: center;
+}
+.quizbody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.question{
+    width: 90vw;
+    height: 20vh;
+    background-color:slategrey;
+}
+.questiontext{
+    font-size: 1.5em;
+    text-align: center; 
+    color: white;
+    width: 100%;
+    margin-top: 1%;
+}
+.score{
+    text-align: center;
+    font-size: 1.5em;
+}
+.hint{
+    text-align: center;
+    font-size: 1.5em;
+}
+button{
+    margin:2vh 0 0 10% ;
+    width: 80%;
+    height: 5vh;
+    background-color: slategrey;
+    color:white;
+    font-size: 1.5em;
+}
