@@ -27,7 +27,7 @@ function checkwin() {
         }
     }
     move++;
-    if (move === 9) {
+    if (move === 9 && game) {
         const player_turn = document.querySelector('.player_turn');
         player_turn.textContent = "Oops! It's a draw!";
         game = false;

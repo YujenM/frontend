@@ -73,88 +73,101 @@ const question = {
     ]
     };
 
-let anotherquestion=0;
-// disable button
+let currentquestion=0;
+let score=0
+
+function display(){
+    let dquestion=document.querySelector(".questiontext");
+    dquestion.textContent=question.data[currentquestion].statement;
+}
+function checkanswer(istrue){
+    const truebutton= document.querySelector(".true");
+    const falsebutton=document.querySelector(".false");
+    const answer=question.data[currentquestion].answer;
+    if (istrue){
+        if (istrue===answer){
+            truebutton.style.backgroundColor = "green";
+            score++
+        }else{
+            truebutton.style.backgroundColor = "red";
+            const hint=document.querySelector(".hint");
+            hint.textContent=question.data[currentquestion].reason;
+        }
+    }else{
+        if (istrue===answer){
+            falsebutton.style.backgroundColor = "green";
+            score++;
+        }else{
+            falsebutton.style.backgroundColor = "red";
+            const hint=document.querySelector(".hint");
+            hint.textContent=question.data[currentquestion].reason;
+        }
+    }
+    disable();
+    nextquestion();
+}
+function checkbutton(){
+    const truebutton= document.querySelector(".true");
+    const falsebutton=document.querySelector(".false");
+    truebutton.addEventListener("click",()=>checkanswer(true));
+    falsebutton.addEventListener("click",()=>checkanswer(false));
+}
 function disable(){
-    const right=document.querySelector(".true");
-    const wrong=document.querySelector(".false");
-    // remove event listeners from buttons to prevent multiple clicks on same option
-    right.setAttribute("disabled","")
-    wrong.setAttribute("disabled","")
-    
+    const truebutton= document.querySelector(".true");
+    const falsebutton=document.querySelector(".false");
+    truebutton.disabled=true;
+    falsebutton.disabled=true;
 }
-
-// function for dsplaying question
-function displayquestion(){
-    const dquestion = document.querySelector(".questiontext");
-    dquestion.textContent=question.data[anotherquestion].statement;
-    
+function nextquestion(){
+    const next=document.querySelector(".nextq");
+    next.disabled=false;
 }
-
-function checkanswer(){
-    const right=document.querySelector(".true");
-    const wrong=document.querySelector(".false");
-    const answer=question.data[anotherquestion].answer.toString();
-    const hint=document.querySelector(".hint");
-    right.addEventListener("click",()=>{
-        if (right.name===answer){
-            debugger;
-            right.style.cssText="background-color:green;"
-            disable()
-            next()
-            
-        }else{
-            debugger;
-            right.style.cssText="background-color:red;"
-            hint.textContent=question.data[anotherquestion].reason;
-            disable()
-            next()
-            
-        }
-    })
-    wrong.addEventListener("click",()=>{
-        if (wrong.name===answer){
-            debugger;
-            wrong.style.cssText="background-color:green;"
-            disable()
-            next()
-            
-        }else{
-            debugger;
-            wrong.style.cssText="background-color:red;"
-            hint.textContent=question.data[anotherquestion].reason;
-            disable()
-            next()
-            
-        }
-    })
+function changequestion(){
+    currentquestion++;
+    if (currentquestion<question.data.length){
+        display(); 
+        reset()
+    }else{
+        let dquestion=document.querySelector(".questiontext");
+        dquestion.textContent="Quiz Finished!";
+        const scoreDisplay = document.createElement("div");
+        scoreDisplay.textContent = "Your Score: " + score + "/" + question.data.length;
+        dquestion.appendChild(scoreDisplay);
+        quizfinished();
+    }
 }
 function reset(){
-    const right=document.querySelector(".true");
-    const wrong=document.querySelector(".false");
+    const truebutton= document.querySelector(".true");
+    const falsebutton=document.querySelector(".false");
+    const next=document.querySelector(".nextq");
+    truebutton.removeAttribute("disabled");
+    falsebutton.removeAttribute("disabled");
+    next.disabled=true;
     const hint=document.querySelector(".hint");
-    right.style.cssText="background-color:slategrey;";
-    wrong.style.cssText="background-color:slategrey;"
-    right.removeAttribute("disabled");
-    wrong.removeAttribute("disabled");
     hint.textContent="";
-    let nextquestion=document.querySelector(".nextq");
-    nextquestion.setAttribute("disabled","");
+    truebutton.style.backgroundColor = "slategrey";
+    falsebutton.style.backgroundColor = "slategrey";
 }
-function next(){
-    debugger;
-    const nextquestion=document.querySelector(".nextq");
-    nextquestion.removeAttribute("disabled")
-    nextquestion.addEventListener("click",()=>{
-        anotherquestion=anotherquestion+1;
-        console.log(anotherquestion);
-        displayquestion();
-        debugger;
-        reset()
-        debugger;
-    })
+function clicknextquestion(){
+    const next=document.querySelector(".nextq");
+    next.addEventListener("click",changequestion);
+}
+function quizfinished(){
+    const truebutton= document.querySelector(".true");
+    const falsebutton=document.querySelector(".false");
+    const hint=document.querySelector(".hint");
+    const next=document.querySelector(".nextq");
+    truebutton.style.display="none";
+    falsebutton.style.display="none";
+    hint.style.display="none";
+    next.style.display="none";
+    // next.textContent="Take the quiz again"
+
+}
+function init(){
+    display();
+    checkbutton();
+    clicknextquestion();
 }
 
-displayquestion();
-checkanswer();
-debugger;
+init();
