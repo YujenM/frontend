@@ -1,9 +1,9 @@
 const question = {
     data: [
         {
-            statement: "'hello' + 'world' === 'helloworld'",
-            answer: true,
-            reason: "the concatenation of the strings 'hello' and 'world' results in 'helloworld'."
+            statement: "'hello' === 'world'",
+            answer: false,
+            reason: "the strings 'hello' and 'world' are not the same."
         }, 
         {
             statement: "'apple' + 'banana' === 'applebanana'",
@@ -11,9 +11,9 @@ const question = {
             reason: "the concatenation of the strings 'apple' and 'banana' results in 'applebanana'."
         },
         {
-            statement: "'42' + '7' === '427'",
-            answer: true,
-            reason: "the concatenation of the strings '42' and '7' results in '427'."
+            statement: "in javascript, arrays can only contain elements of the same type.",
+            answer: false,
+            reason: "javascript arrays can contain elements of different types, as they are dynamically typed."
         },
         {
             statement: "in javascript, strings are mutable (editable) values",
@@ -42,9 +42,9 @@ const question = {
             reason: "strict mode helps developers write secure and cleaner code by throwing errors for common coding mistakes, such as using undeclared variables and assigning values to read-only properties"
         },  
         {
-            statement: "the result of '5' + 3 in javascript is '53'",
-            answer: true,
-            reason: "the '+' operator performs string concatenation when at least one operand is a string. in this case, '5' is treated as a string, and the number 3 is implicitly converted to a string, resulting in '53'"
+            statement: "the 'typeof' operator returns 'function' for functions in javascript.",
+            answer: false,
+            reason: "the 'typeof' operator returns 'function' for functions in javascript."
         }, 
         {
             statement: "you can define a multiline string (template literal) in javascript using backticks (`)",
